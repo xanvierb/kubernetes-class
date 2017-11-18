@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-        .get('http://localhost:1337')
+        .get(`http://${environment.apiUrl}`)
         .subscribe(data => {
           this.title = data['message'];
     });
