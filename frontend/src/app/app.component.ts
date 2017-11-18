@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-        .get(`http://${environment.apiUrl}`)
+        .get(environment.apiUrl)
         .subscribe(data => {
           this.title = data['message'];
     });

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'example.com/api'
+  apiUrl: 'https://MINIKUBE_IP/api'
 };
