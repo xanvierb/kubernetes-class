@@ -7,6 +7,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => res.send('{"message":"Connection with API succeeded!"}'));
+app.get('/api', (req, res) => res.send('{"message":"Connection with API succeeded!"}'));
 
 app.listen(1337, () => console.log('Example app listening on port 1337!'));
