@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   labels:
@@ -24,3 +24,7 @@ spec:
       - image: kubernetes-class-frontend:3.0
         imagePullPolicy: IfNotPresent
         name: frontend
+        livenessProbe: 
+          httpGet:
+            path: /
+            port: 80
