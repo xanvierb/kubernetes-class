@@ -128,18 +128,14 @@ Het opzetten van het Kubernetes cluster gaat in meerdere fasen: Het opzetten van
 ## Deployment
 In Kubernetes is een deployment een beschrijving van hoe je applicatie (pod) neergezet moet worden neergezet. Deze beschrijving wordt geschreven in YAML. Een voorbeeld van hoe de structuur van een deployment eruit ziet kun je zien in de [API documentatie](http://v1-8.docs.kubernetes.io/docs/api-reference/v1.6/#deployment-v1beta1-apps).
 
-Allereerst maak je een bestand aan in beide projecten genaamd *deployment.yaml*. Daarin zet je een aantal dingen om aan te geven wat je aan het maken bent, zoals weergegeven in onderstaand code block.
+Allereerst maak je een bestand aan in beide projecten genaamd *deployment.yaml*. Daarin schrijf je een specificatie van het deployment, zoals weergegeven in onderstaand code block.
 ```YAML
 apiVersion: apps/v1beta1 # Versie van de Kubernetes API die wordt gebruikt
 kind: Deployment # Het soort resource in Kubernetes dat wordt aangemaakt
 metadata:
   labels:
-    foo: bar # Voorbeeld van een label die je kunt geven aan 
+    foo: bar # Voorbeeld van een label die je kunt geven aan de deployment
   name: foobar-app # De naam die de deployment zal hebben in het cluster
-```
-
-Vervolgens maak je een specificatie voor deze specifieke deployment.
-```YAML
 spec:
   revisionHistoryLimit: 1 # Hoeveel vorige versies bijgehouden moet worden om rollback te kunnen doen
   replicas: 2 # Hoeveel pods tegelijkertijd gedraaid moeten worden van deze applicatie
@@ -151,10 +147,6 @@ spec:
       maxSurge: 1 # Hoeveel pods meer dan het aantal replica's tegelijkertijd gedraaid mogen worden
       maxUnavailable: 1 # Hoeveel pods tegelijkertijd offline mogen zijn
     type: RollingUpdate/Recreate # Het type deployment strategie
-```
-
-Als laatste schrijf je een template voor de pod die wordt uitgerold.
-```YAML
   template:
     metadata:
       labels:
@@ -173,7 +165,7 @@ Als laatste schrijf je een template voor de pod die wordt uitgerold.
 ## Service
 Een service wordt in Kubernetes doorgaans gebruikt om een bepaalde pod beschikbaar te maken binnen het cluster, zodat een service, zoals een API, aangeroepen kan worden door andere pods binnen het cluster. Een voorbeeld van hoe een service eruit ziet kun je vinden in de [API documentatie](http://v1-8.docs.kubernetes.io/docs/api-reference/v1.6/#service-v1-core).
 
-Vergelijkbaar met het deployment bestand, maak je eerst een *service.yaml* bestand in beide projecten. Veel van de velden zijn hetzelfde als de deployment.
+Vergelijkbaar met het deployment bestand, maak je eerst een *service.yaml* bestand in beide projecten. Veel van de velden zijn hetzelfde als de deployment. De verschillen beginnen bij het spec veld, hier wordt een specificatie gemaakt van hoe de service zich gedraagt. De API, die intern op de poort 1337 draait, moet op poort 80 op het cluster beschikbaar worden gemaakt. 
 ```YAML
 apiVersion: v1 # Deze versie is anders dan de deployment
 kind: Service 
@@ -181,10 +173,6 @@ metadata:
   labels:
     foo: bar
   name: foobar-app # De naam die de service zal hebben in het cluster
-```
-
-De verschillen beginnen bij het spec veld, hier wordt een specificatie gemaakt van hoe de service zich gedraagt. De API, die intern op de poort 1337 draait, moet op poort 80 op het cluster beschikbaar worden gemaakt.
-```YAML
 spec:
   ports: # Een array van poorten die opengezet worden door de service
   - name: http
@@ -198,7 +186,7 @@ spec:
 ```
 
 ## Ingress
-In tegenstelling tot de deployment en service, hoef je een ingress slechts één keer te maken. Het begin is vergelijkbaar met de deployment en service, met de uitzondering dat je een ingress class annotatie meegeeft in de metadata.
+In tegenstelling tot de deployment en service, hoef je een ingress slechts één keer te maken. Het begin is vergelijkbaar met de deployment en service, met de uitzondering dat je een ingress class annotatie meegeeft in de metadata. Vervolgens maak je een specificatie voor de ingress. Je kunt een ingress op meerdere criteria matchen naar een service, bijvoorbeeld op hostname of op request-pad. In dit geval gaan we alleen matchen op basis van pad. Bedenk hierbij welke zaken je moet openzetten naar het internet om de applicatie correct te laten werken. Welke interne services moeten op welke paden worden opengezet?
 ```YAML
 apiVersion: extensions/v1beta1 # API versie voor ingress
 kind: Ingress 
@@ -206,10 +194,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx # Dit zorgt ervoor dat een nginx proxy wordt opgezet om als ingress te dienen
   name: ingress-name # De naam van de ingress
-```
-
-Vervolgens maak je een specificatie voor de ingress. Je kunt een ingress op meerdere criteria matchen naar een service, bijvoorbeeld op hostname of op request-pad. In dit geval gaan we alleen matchen op basis van pad. Bedenk hierbij welke zaken je moet openzetten naar het internet om de applicatie correct te laten werken. Welke interne services moeten op welke paden worden opengezet?
-```YAML
 spec:
   rules: # Regels van de ingress
   - http:
