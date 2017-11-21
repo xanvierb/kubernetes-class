@@ -28,7 +28,7 @@ Kubectl is now configured to use the cluster.
 
 
 
-Nadat de VM is opgestart kun je met het commando `minikube ip` het IP-adres van het Kubernetes cluster opvragen. Dit heb je nodig bij het opzetten van de Angular applicatie.
+Nadat de VM is opgestart. Je hebt voor het configureren van de omgeving nog een addon nodig voor minikube, hiervoor voer je het commando `minikube addons enable ingress`. Daarna kun je met het commando `minikube ip` het IP-adres van het Kubernetes cluster opvragen. Dit heb je nodig bij het opzetten van de Angular applicatie.
 
 # Lokaal testen applicaties
 Je kunt de applicaties eerst proberen lokaal te draaien voordat je de applicaties in het cluster gaat draaien. Dit kun je doen door de volgende commando's uit te voeren in twee aparte terminal-vensters
