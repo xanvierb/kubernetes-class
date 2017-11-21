@@ -21,7 +21,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: kubernetes-class-frontend:3.0
+      - image: kubernetes-class-frontend:1.0
         imagePullPolicy: IfNotPresent
         name: frontend
         livenessProbe: 
