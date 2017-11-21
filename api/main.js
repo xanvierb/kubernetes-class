@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const os = require("os");
+const port = 1337;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -7,6 +9,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/api', (req, res) => res.send('{"message":"Connection with API succeeded!"}'));
+app.get('/api', (req, res) => res.send(`{"message":"Connection with API succeeded! Connected to node ${os.hostname()}"}`));
 
-app.listen(1337, () => console.log('Example app listening on port 1337!'));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
