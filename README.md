@@ -1,3 +1,5 @@
+*Voor vragen kun je contact met mij opnemen op jsterken@quintor.nl*
+
 # Voordat je begint
 Er zijn een aantal applicaties die geïnstalleerd moeten zijn voordat je kunt beginnen met het uitrollen van het Kubernetes cluster
 * [Docker](https://store.docker.com/search?type=edition&offering=community)
