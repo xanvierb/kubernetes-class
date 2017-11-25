@@ -1,5 +1,6 @@
 *Voor vragen kun je contact met mij opnemen op jsterken@quintor.nl*
-*[Voorbeeld van hoe het eindresultaat eruit moet zien](https://github.com/johnsterken/kubernetes-class/tree/complete-version)*
+
+[Voorbeeld van hoe het eindresultaat eruit moet zien](https://github.com/johnsterken/kubernetes-class/tree/complete-version)
 
 # Voordat je begint
 Er zijn een aantal applicaties die geïnstalleerd moeten zijn voordat je kunt beginnen met het uitrollen van het Kubernetes cluster
