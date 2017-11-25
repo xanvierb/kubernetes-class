@@ -1,3 +1,7 @@
+*Voor vragen kun je contact met mij opnemen op jsterken@quintor.nl*
+
+[Voorbeeld van hoe het eindresultaat eruit moet zien](https://github.com/johnsterken/kubernetes-class/tree/complete-version)
+
 # Voordat je begint
 Er zijn een aantal applicaties die geïnstalleerd moeten zijn voordat je kunt beginnen met het uitrollen van het Kubernetes cluster
 * [Docker](https://store.docker.com/search?type=edition&offering=community)
@@ -62,6 +66,8 @@ Nu kun je de Docker images bouwen door de volgende commando's uit te voeren vanu
 docker build -t kubernetes-class-frontend:1.0 frontend
 docker build -t kubernetes-class-api:1.0 api
 ```
+Als je zelf geen docker op je laptop hebt staan, kun je ook dit binnen de minikube VM draaien door `minikube ssh` uit te voeren.
+
 De output van de commando's zou vergelijkbaar moeten zijn met het volgende code block:
 ```
 ➜  kubernetes-class git:(master) ✗ docker build -t kubernetes-class-frontend:1.0 frontend
