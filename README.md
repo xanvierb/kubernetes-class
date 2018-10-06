@@ -1,7 +1,3 @@
-*Voor vragen kun je contact met mij opnemen op jsterken@quintor.nl*
-
-[Voorbeeld van hoe het eindresultaat eruit moet zien](https://github.com/johnsterken/kubernetes-class/tree/complete-version)
-
 # Voordat je begint
 Er zijn een aantal applicaties die geïnstalleerd moeten zijn voordat je kunt beginnen met het uitrollen van het Kubernetes cluster
 * [Docker](https://store.docker.com/search?type=edition&offering=community)
@@ -29,8 +25,6 @@ Setting up kubeconfig...
 Starting cluster components...
 Kubectl is now configured to use the cluster.
 ```
-
-
 
 Nadat de VM is opgestart. Je hebt voor het configureren van de omgeving nog een addon nodig voor minikube, hiervoor voer je het commando `minikube addons enable ingress`. Daarna kun je met het commando `minikube ip` het IP-adres van het Kubernetes cluster opvragen. Dit heb je nodig bij het opzetten van de Angular applicatie.
 
